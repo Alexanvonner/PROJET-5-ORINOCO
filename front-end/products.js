@@ -92,13 +92,6 @@ addCart.addEventListener("click",(event)=>{
     quantite: quantity,
     prix: item.price / 100,
   };
-
-  console.log(valeurFormulaire);
-
-
-
-
-
 //-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 
@@ -109,26 +102,39 @@ addCart.addEventListener("click",(event)=>{
   // Json.parse  pour convertir les donnée au format Json dans le local storage en objet Javascript
 
   // Si il y a déja des produits produit Enregistre dans le Local storage
-  if (produitEnregistreLocalStorage) {
-    ajoutProduitLocalStorage();
-    console.log(produitEnregistreLocalStorage);
-  }
-  // Si il y a pas de produits produit Enregistre dans le Local storage
-  else {
+  if (!produitEnregistreLocalStorage) {
     produitEnregistreLocalStorage = [];
-    ajoutProduitLocalStorage();
+    
   }
+  
+  
+    ajoutProduitLocalStorage();
+  
+   //fonction ajouter au produits selectionner dans le localStorage
+   function ajoutProduitLocalStorage() {
 
-  //fonction ajouter au produits selectionner dans le localStorage
-  function ajoutProduitLocalStorage() {
     // ajout de l'objet + value selectionner par l'utilisateur
-    produitEnregistreLocalStorage.push(valeurFormulaire);
+    
+
+    // il faut verifier si le produit existe dans le tableau ?
+
+    let pdtExist = produitEnregistreLocalStorage.find(x => x.id_produit = valeurFormulaire.id_produit && x.option == valeurFormulaire.option);
+    if(pdtExist){
+
+      produitEnregistreLocalStorage[produitEnregistreLocalStorage.indexOf(pdtExist)].quantite = parseInt(produitEnregistreLocalStorage[produitEnregistreLocalStorage.indexOf(pdtExist)].quantite) + parseInt(valeurFormulaire.quantite);
+      
+    }else{
+      produitEnregistreLocalStorage.push(valeurFormulaire);
+    }
+    
 
     // la transformation au format JSON et l'envoyer dans le key "" produit" du localstorage
-    localStorage.setItem(
-      "produit",
+    localStorage.setItem("produit",
       JSON.stringify(produitEnregistreLocalStorage)
     );
   }
-})
+
+
+ 
+  })
 }

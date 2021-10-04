@@ -68,10 +68,14 @@ if (produitEnregistreLocalStorage == null || produitEnregistreLocalStorage == 0)
      console.log(button.getAttribute("data-id"));
 
     produitEnregistreLocalStorage = JSON.parse(localStorage.getItem("produit"));
-    
+
+
+    // j'utilise la methode FIND pour trouver un element qui verifie une condition 
     let find = produitEnregistreLocalStorage.find(x => x.id_produit == button.getAttribute("data-id"));
-    let index = produitEnregistreLocalStorage.indexOf(find);
-    produitEnregistreLocalStorage.splice(index,1);
+    // j'utilise la methode INDEXof pour trouver l'indice de la position dans un array
+    let indice = produitEnregistreLocalStorage.indexOf(find);
+    // j'utilise la methode SPLICE pour suprimer l
+    produitEnregistreLocalStorage.splice(indice,1);
 
 
       // je modifie le localstorage
@@ -89,10 +93,6 @@ deletePanier.addEventListener('click', (event) => {
   alert("Votre panier a été vider");
   window.location.href = "cart.html"
 })
-
-
-
-
 
 
 }
