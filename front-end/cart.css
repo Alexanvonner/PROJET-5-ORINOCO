@@ -1,0 +1,40 @@
+.tab{
+    border: 1px solid midnightblue;
+    border-collapse: collapse;
+    min-width: 400px;
+    width: auto;
+    cursor: pointer;
+    margin: 10px auto;
+
+}
+
+thead tr {
+    background-color: midnightblue;
+    color: white;
+    margin: 100px auto;
+    min-width: 400px;
+    width:auto;
+    
+}
+th,td{
+    padding: 15px 20px;
+}
+h2{
+    text-align: center;
+}
+#form{
+    width:80%;
+    margin:0 auto;
+    background-color: #d7f2f0;
+    border-radius : 20px;display: flex;
+    flex-direction: column;
+} 
+
+input, button{
+    margin-top: 20px;
+}
+#button{
+    width: 100px;
+    margin: 30px auto;
+}
+

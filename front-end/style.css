@@ -1,0 +1,67 @@
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+  margin-bottom: 50px;
+  border-radius: 0;
+}
+
+/* Remove the jumbotron's default bottom margin */
+.jumbotron {
+  margin-bottom: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+  background-color: #f2f2f2;
+  padding: 25px;
+}
+
+.items{
+  border: solid;
+  border-radius: 10px;
+  width:200px;
+}
+.elementMain{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-nounours{
+  box-shadow: 0 10px 20px lavender;
+  margin-top: 30px;
+  border-radius: 20px;
+
+}
+
+.footer-nounours{
+  background-color: rgb(159, 183, 189);
+  border-radius: 0px 0px 20px 20px;
+  text-align: center;
+}
+
+.nounours{
+  height: 200px;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+
+}
+.cardProducts{
+  border: solid;
+  text-align: center;
+}
+ul{
+  list-style: none;
+}
+
+.teddiesImg{
+  width: 200px;
+}
+
+.name , .price{
+  text-align: center;
+}
+
+.btn-click{
+  border-radius: 5px;
+  background-color:rgb(165, 134, 155);
+  margin-bottom: 20px;
+}
