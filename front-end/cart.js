@@ -24,13 +24,40 @@ if (produitEnregistreLocalStorage == null || produitEnregistreLocalStorage == 0)
          <td>${produitEnregistreLocalStorage[b].nom_produit}</td>
          <td>${produitEnregistreLocalStorage[b].quantite}</td>
          <td>${produitEnregistreLocalStorage[b].option}</td>
-         <td>${produitEnregistreLocalStorage[b].prix}</td>
+         <td>${produitEnregistreLocalStorage[b].prix * produitEnregistreLocalStorage[b].quantite}</td>
          <td> <button data-id="${produitEnregistreLocalStorage[b].id_produit}" class="deleteItem" OnClick="SupprimeProduit(this)" >Supprimé</button> </td>
          </tr>
        `;
        affichageProduit.innerHTML = structurePanier;
     }
     console.log(structurePanier);
+
+    // je crée un tableau vide qui va me servir a stocker les prix de mon local storage 
+    let totalCart = [];
+
+    // je parcour mon localStorage pour recuperer tout les prix présent dans celui-ci
+    for (let index = 0; index < produitEnregistreLocalStorage.length; index++) {
+      // je récuperer les PRIX que je multiplie fois la QUANTITE présente de chaques articles 
+    let resultatTotal = produitEnregistreLocalStorage[index].prix * produitEnregistreLocalStorage[index].quantite;
+
+    // j'utilise la methode PUSH pour ajouter les prix  dans mon tableau TOTALCART pour pouvoir utiliser la methode REDUCER 
+    totalCart.push(resultatTotal);
+
+    // j'utilise la methode REDURER qui me sert a calculer le total des mon panier 
+    const reducer = (acc,cur) => acc + cur
+
+
+
+    
+    let montantTotal = document.getElementById("montantTotal");
+    montantTotal.innerHTML = `${totalCart.reduce(reducer)}€`;
+
+  }
+
+
+
+
+
 
 
 
@@ -93,6 +120,7 @@ deletePanier.addEventListener('click', (event) => {
   alert("Votre panier a été vider");
   window.location.href = "cart.html"
 })
+
 
 
 }
