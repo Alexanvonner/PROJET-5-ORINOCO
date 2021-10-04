@@ -67,16 +67,13 @@ if (produitEnregistreLocalStorage == null || produitEnregistreLocalStorage == 0)
    function SupprimeProduit(button) {
      console.log(button.getAttribute("data-id"));
 
-     produitEnregistreLocalStorage = JSON.parse(localStorage.getItem("produit"));
+    produitEnregistreLocalStorage = JSON.parse(localStorage.getItem("produit"));
     
+    let find = produitEnregistreLocalStorage.find(x => x.id_produit == button.getAttribute("data-id"));
+    let index = produitEnregistreLocalStorage.indexOf(find);
+    produitEnregistreLocalStorage.splice(index,1);
 
-     // Je commence par supprimer mon article du dataStorage
-     produitEnregistreLocalStorage.splice(produitEnregistreLocalStorage.indexOf(
-         produitEnregistreLocalStorage.find(
-           x => x.id_produit == button.getAttribute("data-id"))
-       ),
-       1
-     );
+
       // je modifie le localstorage
      localStorage.setItem("produit", JSON.stringify(produitEnregistreLocalStorage));
      // Je supprime l'article sur le front end

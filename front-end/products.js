@@ -95,6 +95,14 @@ addCart.addEventListener("click",(event)=>{
 
   console.log(valeurFormulaire);
 
+
+
+
+
+//-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+
+
   let produitEnregistreLocalStorage = JSON.parse(
     localStorage.getItem("produit")
   );
