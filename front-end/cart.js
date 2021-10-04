@@ -1,3 +1,8 @@
+// LIGNE 28 RELOAD  VOIR AVEC MENTOR SI BONNE SOLUTION OU PAS ?
+
+
+
+
 var produitEnregistreLocalStorage = JSON.parse(localStorage.getItem("produit"));
 // Json.parse  pour convertir les donnée au format Json dans le local storage en objet Javascript
 
@@ -25,7 +30,7 @@ if (produitEnregistreLocalStorage == null || produitEnregistreLocalStorage == 0)
          <td>${produitEnregistreLocalStorage[b].quantite}</td>
          <td>${produitEnregistreLocalStorage[b].option}</td>
          <td>${produitEnregistreLocalStorage[b].prix * produitEnregistreLocalStorage[b].quantite}</td>
-         <td> <button data-id="${produitEnregistreLocalStorage[b].id_produit}" class="deleteItem" OnClick="SupprimeProduit(this)" >Supprimé</button> </td>
+         <td> <a href "javascript:window.location.reload()"> <button data-id="${produitEnregistreLocalStorage[b].id_produit}" class="deleteItem" OnClick="SupprimeProduit(this)">Supprimé</button> </td> </a>
          </tr>
        `;
        affichageProduit.innerHTML = structurePanier;
@@ -109,6 +114,7 @@ if (produitEnregistreLocalStorage == null || produitEnregistreLocalStorage == 0)
      localStorage.setItem("produit", JSON.stringify(produitEnregistreLocalStorage));
      // Je supprime l'article sur le front end
      docuement = document.getElementById(button.getAttribute("data-id")).remove();
+     
    }
 
 
