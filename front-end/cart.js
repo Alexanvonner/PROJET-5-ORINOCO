@@ -84,10 +84,10 @@ if (produitEnregistreLocalStorage == null || produitEnregistreLocalStorage == 0)
       let cartRempli = `
      <form id="form">
               <input type="text" id="mail" placeholder="Adresse E-mail">
-              <input type="text" placeholder="Nom">
-              <input type="text" placeholder="Prénom">
-              <input type="Adresse" placeholder="adresse">
-              <input type="Code postale" placeholder="code postale">
+              <input type="text" id="nom" placeholder="Nom">
+              <input type="text" id="prenom" placeholder="Prénom">
+              <input type="text" id="adresse" placeholder="adresse">
+              <input type="text" id="ville" placeholder="code postale">
             </form>
             <div id="button">
               <button id="send">Valider</button>
@@ -128,16 +128,36 @@ deletePanier.addEventListener('click', (event) => {
 })
 
 
-let email = document.getElementById("mail");
+// je cible mon button validation formulaire pour pouvoir l'écouter au click
 let send = document.getElementById("send");
 
-console.log(email);
 
-send.addEventListener('click' , (event)=>{
+// je cible les input à mettre de mon formulaire pour ensuite les enregistrer dans le localstorage 
+let email = document.getElementById("mail");
+let nom = document.getElementById("nom");
+let prenom  = document.getElementById("prenom");
+let adresse = document.getElementById("adresse");
+let ville = document.getElementById("ville");
 
-  let mail = email.value;
-  console.log(mail);
-  
+
+
+
+
+
+// j'écoute 
+send.addEventListener('click',(event)=>{
+
+  let valeurFormulaire = 
+  {
+    lastName : nom.value,
+    firstName : prenom.value,
+    adresse:adresse.value,
+    city:ville.value,
+    email:email.value,
+  }
+
+ // mettre les valeur du formulaire dans le localStorage
+ localStorage.setItem("formulaire", JSON.stringify(valeurFormulaire));
 
 })
 
