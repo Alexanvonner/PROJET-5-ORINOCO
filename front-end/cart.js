@@ -83,14 +83,14 @@ if (produitEnregistreLocalStorage == null || produitEnregistreLocalStorage == 0)
     } else {
       let cartRempli = `
      <form id="form">
-              <input type="text" placeholder="Adresse E-mail">
+              <input type="text" id="mail" placeholder="Adresse E-mail">
               <input type="text" placeholder="Nom">
               <input type="text" placeholder="Prénom">
               <input type="Adresse" placeholder="adresse">
               <input type="Code postale" placeholder="code postale">
             </form>
             <div id="button">
-              <button>Valider</button>
+              <button id="send">Valider</button>
             </div>
     `;
     affichageFormulaire.innerHTML =  cartRempli;
@@ -126,6 +126,29 @@ deletePanier.addEventListener('click', (event) => {
   alert("Votre panier a été vider");
   window.location.href = "cart.html"
 })
+
+
+let email = document.getElementById("mail");
+let send = document.getElementById("send");
+
+console.log(email);
+
+send.addEventListener('click' , (event)=>{
+
+  let mail = email.value;
+  console.log(mail);
+  
+
+})
+
+
+
+
+
+
+
+
+
 
 
 
