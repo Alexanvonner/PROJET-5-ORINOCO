@@ -129,9 +129,7 @@ addCart.addEventListener("click",(event)=>{
     
 
     // la transformation au format JSON et l'envoyer dans le key "" produit" du localstorage
-    localStorage.setItem("produit",
-      JSON.stringify(produitEnregistreLocalStorage)
-    );
+    localStorage.setItem("produit",JSON.stringify(produitEnregistreLocalStorage));
   }
 
 

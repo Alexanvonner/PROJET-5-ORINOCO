@@ -87,7 +87,7 @@ if (produitEnregistreLocalStorage == null || produitEnregistreLocalStorage == 0)
               <input type="text" id="nom" placeholder="Nom">
               <input type="text" id="prenom" placeholder="Prénom">
               <input type="text" id="adresse" placeholder="adresse">
-              <input type="text" id="ville" placeholder="code postale">
+              <input type="text" id="ville" placeholder="ville">
             </form>
             <div id="button">
               <button id="send">Valider</button>
@@ -153,11 +153,93 @@ send.addEventListener('click',(event)=>{
     firstName : prenom.value,
     adresse:adresse.value,
     city:ville.value,
-    email:email.value,
+    email:email.value
   }
 
+  // ------------------------- GESTION DE LA VALIDATION DU FORMULAIRE --------------------------------------//
+  function name_control (){
+   if (/^[A-Za-z]{3,20}$/.test(valeurFormulaire.firstName))
+    {
+     return true;
+    } else 
+    {
+      return false;
+    } 
+  };
+  
+  function lastname_control (){
+    if (/^[A-Za-z]{3,20}$/.test(valeurFormulaire.lastName))
+    {
+       return true;
+     } else 
+     {
+       return false;
+     } 
+   };
+  
+  function ValidateEmail(){
+    if ( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(valeurFormulaire.email))
+    {
+      return (true)
+    }else{
+      return (false)
+    }
+  };
+
+  function street (){
+    if (/^[a-zA-Z0-9\s,'-]*$/.test(valeurFormulaire.adresse))
+    {
+       console.log("OK");
+       return true;
+     } else 
+     {
+       console.log("KO");
+       return false;
+     } 
+   };
+  
+
+   function cityValide (){
+     if (/^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/.test(valeurFormulaire.city)) {
+       return true;
+     } else {
+       return false;
+     }
+   }
+
+
+
+
+
+
+
+
+
+
+if (name_control() && ValidateEmail() && lastname_control() && street() && cityValide()) {
+  localStorage.setItem("formulaire", JSON.stringify(valeurFormulaire));
+} else {
+  alert("Veuillez remplir les champs correctements avant de procéder au paiement");
+}
+
+
+
+
+
+
+
+
+
+
  // mettre les valeur du formulaire dans le localStorage
- localStorage.setItem("formulaire", JSON.stringify(valeurFormulaire));
+
+
+ let sendData = {
+   produitEnregistreLocalStorage,
+   valeurFormulaire
+ }
+
+ console.log(sendData);
 
 })
 
